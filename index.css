@@ -6,12 +6,13 @@ body{
 }
 
 .conteiner{
-    position: static;
     border-radius: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     background-color: white;
-    width: 90%;
+    width: 50%;
     height: 100vh;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -20,23 +21,26 @@ body{
 }
 
 h1{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
     flex-direction: row;
     text-align: justify ;
 }   
 
 
-.chat-footer {
+.chat{
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    border-top: 1px solid #ddd;
+    align-items: center;
 }
 
 input {
-    flex: 1;
     padding: 10px 100%;
+    margin: 20px;
     border: none;
     border-radius: 20px;
     background: #f1f1f1;
-    outline: none;
-}
+    align-self: center;
+
+}   
