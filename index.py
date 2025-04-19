@@ -1,43 +1,53 @@
-import nltk
-from nltk.chat.util import Chat, reflections
+def linhas():
+    print('-=' * 10)
 
-# Baixar recursos necessários do NLTK
-nltk.download('punkt')
-
-# Definindo os pares de perguntas e respostas
-pares = [
-    (r"oi|olá|oii", ["Olá, como posso te ajudar hoje?", "Oi! Em que posso te ajudar?"]),
-    (r"como você está?", ["Estou bem, obrigado! E você?", "Estou ótimo! Como você está?"]),
-    (r"qual é o sato)", ["De nada!", "Fico feliz em ajudar!"]),
-    (r"(tchau|até logo|bye)eu nome?", ["Eu sou um chatbot simples, criado para te ajudar.", "Meu nome é ChatBot!"]),
-    (r"(obrigado|valeu|gr", ["Tchau! Até mais!", "Foi bom falar com você!"]),
-    (r"(.*)", ["Desculpe, não entendi. Pode reformular sua pergunta?"]),
-]
-
-# Criando o chatbot com os padrões definidos
-chatbot = Chat(pares, reflections)
-
-# Função para iniciar a conversa
-def conversar():
-    print("Oi! Eu sou um chatbot. Como posso te ajudar? (Digite 'tchau' para sair)")
+# FUNÇÃO PRINCIPAL DO CHATBOT
+def chatbot(nome=''):
     while True:
-        # Recebendo a entrada do usuário
-        entrada_usuario = input("Você: ")
+        linhas()
+        print("Olá, bem-vindo(a) ao chatbot da Shopzen! " + nome)
+        linhas()
+        print("""
+OPÇÕES: ESCOLHA UMA:
 
-        # Se o usuário digitar 'tchau', o bot encerra
-        if entrada_usuario.lower() in ["tchau", "até logo", "bye"]:
-            print("ChatBot: Até logo! Fique bem!")
+
+[1] - Ver produtos
+[2] - Ver promoções
+[3] - Falar com um atendente
+[4] - Encerrar programa
+""")
+
+        # Entrada do usuário
+        escolha = input("Escolha uma das opções de 1 a 5: ").strip().lower()
+
+        # Listas e strings
+        produtos = ('Whey protein', 'Creatina', 'Aveia em Flocos', 'Castanhas')
+        promocoes = ('Whey - R$55.00', 'Creatina - R$35.00', 'Aveia em flocos (pacote) - R$12.00', 'Castanhas (KG) - R$50.00')
+        atendente = 'Olá, me chamo Willy e sou atendente do Shopzen. Como posso te ajudar hoje?'
+
+        if escolha == "1":
+            linhas()
+            for item in produtos:
+                print(item)
+            linhas()
+
+        elif escolha == "2":
+            linhas()
+            for item in promocoes:
+                print(item)
+            linhas()
+
+        elif escolha == "3":
+            linhas()
+            for item in atendente:
+                print(item)
+            linhas()
+
+        elif escolha == "4":
+            print("Encerrando o programa. Até logo!")
             break
-
-        # Obtendo a resposta do chatbot
-        resposta = chatbot.respond(entrada_usuario)
-
-        # Caso não haja uma resposta definida, o bot avisa que não entendeu
-        if resposta:
-            print(f"ChatBot: {resposta}")
         else:
-            print("ChatBot: Desculpe, não entendi. Pode reformular sua pergunta?")
-
-# Iniciar a conversa
-conversar()
+            print("Opção inválida, tente novamente.")
+            continue
+chatbot()
 
